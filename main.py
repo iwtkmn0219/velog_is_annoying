@@ -5,13 +5,14 @@ f = open("text.txt", "w", encoding="utf8")
 
 print("문제 번호를 입력하세요:", end=" ")
 problem_number = int(input())
-url = "https://www.acmicpc.net/problem/" + str(problem_number)
 
+# Input problem number and get data
+url = "https://www.acmicpc.net/problem/" + str(problem_number)
 req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
 html = urlopen(req)
 boj_contents = str(html.read().decode("utf8"))
-# print(boj_contents)
 
+# Get text
 TITLE_REGULAR_EXPRESSION = "(<title>)([\w\W]+)(</title>)"
 boj_title = re.findall(TITLE_REGULAR_EXPRESSION, boj_contents)[0][1].split(": ")[1]
 velog_title = f'[백준 Python] {problem_number}번 {boj_title}'
