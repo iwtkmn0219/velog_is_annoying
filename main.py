@@ -15,16 +15,23 @@ boj_contents = str(html.read().decode("utf8"))
 # Get text
 TITLE_REGULAR_EXPRESSION = "(<title>)([\w\W]+)(</title>)"
 boj_title = re.findall(TITLE_REGULAR_EXPRESSION, boj_contents)[0][1].split(": ")[1]
-velog_title = f'[백준 Python] {problem_number}번 {boj_title}'
-main_contents = f'[백준 {problem_number} {boj_title}]({url})'
+velog_title = f"[백준 Python] {problem_number}번 {boj_title}"
+main_contents = f"[백준 {problem_number} {boj_title}]({url})"
 PROBLEM_REGULAR_EXPRESSION = "(<h2>문제)([\s\S]+?)(</section>)"
-problem = re.findall("(<p>)([\s\S]+?)(</p>)", re.findall(PROBLEM_REGULAR_EXPRESSION, boj_contents)[0][1])
+problem = re.findall(
+    "(<p>)([\s\S]+?)(</p>)", re.findall(PROBLEM_REGULAR_EXPRESSION, boj_contents)[0][1]
+)
 INPUT_REGULAR_EXPRESSION = "(<h2>입력)([\s\S]+?)(</section>)"
-input_ = re.findall("(<p>)([\s\S]+?)(</p>)", re.findall(INPUT_REGULAR_EXPRESSION, boj_contents)[0][1])
+input_ = re.findall(
+    "(<p>)([\s\S]+?)(</p>)", re.findall(INPUT_REGULAR_EXPRESSION, boj_contents)[0][1]
+)
 OUTPUT_REGULAR_EXPRESSION = "(<h2>출력)([\s\S]+?)(</section>)"
-output = re.findall("(<p>)([\s\S]+?)(</p>)", re.findall(OUTPUT_REGULAR_EXPRESSION, boj_contents)[0][1])
+output = re.findall(
+    "(<p>)([\s\S]+?)(</p>)", re.findall(OUTPUT_REGULAR_EXPRESSION, boj_contents)[0][1]
+)
 
-f.write(velog_title + "\n\n\n")
+f.write(velog_title + "\n\n")
+f.write("백준\npython\n\n")
 f.write(main_contents + "\n\n")
 f.write("## 문제\n")
 for p in problem:
@@ -39,5 +46,7 @@ f.write("## 풀이 및 회고\n")
 f.write("### 풀이\n\n")
 f.write("### 회고\n\n")
 f.write("## 코드\n```python\n\n```\n")
-f.write(f"[>> iwtkmn0219의 Github <<](https://github.com/iwtkmn0219/boj/blob/main/python/{problem_number}.py)")
+f.write(
+    f"[>> iwtkmn0219의 Github <<](https://github.com/iwtkmn0219/boj/blob/main/python/{problem_number}.py)"
+)
 f.close()
