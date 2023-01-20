@@ -34,8 +34,8 @@ python
 ### 회고
 
 ## 코드
-```python
+\```python
 
-```
+\```
 [>> iwtkmn0219의 Github <<](https://github.com/iwtkmn0219/boj/blob/main/python/3005.py)
 ```
